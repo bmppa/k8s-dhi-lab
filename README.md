@@ -1,6 +1,6 @@
-# Enforcing Docker Hardened Images with Validating Admission Policies
+# 🧪 Enforcing Docker Hardened Images with Validating Admission Policies
 
-## Lab Goal
+## 🎯 Lab Goal
 
 Demonstrate how to **enforce the use of Docker Hardened Images (DHI)** in Kubernetes using **Validating Admission Policies (VAP)**. The lab will:
 
@@ -47,8 +47,7 @@ By completing this lab, you will:
 
 For this lab, we assume approved images follow one of these patterns:
 
-* `docker.io/docker/hardened-*:*`
-* `registry.example.com/dhi/*:*`
+* `dhi.io/`
 
 > You can later replace this with **digest pinning**, **Cosign verification**, or **SBOM checks**.
 
@@ -122,7 +121,7 @@ The pods "pod" is invalid: : ValidatingAdmissionPolicy 'require-image-registry' 
 Update the flag `--from-file` with the correct path.
 
 ```
-kubectl create secret docker-registry my-secret --from-file=/path/to/.docker/config.json
+kubectl create secret docker-registry my-secret --from-file=/path/to/.docker/config.json -o yaml > my-secret.yaml
 ```
 
 ```yaml
