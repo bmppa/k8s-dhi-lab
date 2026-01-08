@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  namespace: lab
+spec:
+  containers:
+  - name: my-dhi-container
+    image: dhi.io/nginx:1
+  imagePullSecrets:
+  - name: my-secret
+
