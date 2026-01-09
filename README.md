@@ -28,6 +28,7 @@ By completing this lab, you will:
 * `kubectl` access with cluster-admin
 * A cluster with admission policies enabled (default in recent distros)
 * Familiarity with Docker Hardened Images naming
+* A DockerHub personal access token
 
 ---
 
@@ -121,7 +122,11 @@ The pods "pod" is invalid: : ValidatingAdmissionPolicy 'require-image-registry' 
 Update the flag `--from-file` with the correct path.
 
 ```
-kubectl create secret docker-registry my-secret --from-file=/path/to/.docker/config.json -o yaml > my-secret.yaml
+kubectl create secret docker-registry my-secret -n lab \
+  --docker-server=dhi.io \
+  --docker-username=$DH_USERNAME \
+  --docker-password=$DH_TOKEN \
+  --docker-email=bm.almeida@gmail.com -o yaml > my-secret.yaml
 ```
 
 ```yaml
@@ -176,3 +181,9 @@ Admission decisions appear in:
 | VAP            | Native, fast, declarative | No deep image inspection |
 | OPA/Gatekeeper | Rich logic                | Extra control plane      |
 | Runtime tools  | Detects abuse             | Too late for prevention  |
+
+## 🧹 Cleanup
+
+```bash
+kubectl delete -f .
+```
