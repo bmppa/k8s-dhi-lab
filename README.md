@@ -119,7 +119,7 @@ The pods "pod" is invalid: : ValidatingAdmissionPolicy 'require-image-registry' 
 
 ## Step 5 – Deploy a Hardened Image (Expected: ✅ Allowed)
 
-Update the flag `--from-file` with the correct path.
+Update the `username` and `password` fields with your own credentials.
 
 ```
 kubectl create secret docker-registry my-secret -n lab \
